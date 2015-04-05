@@ -4,7 +4,7 @@
  * get the sum
  *
  */
-function arraySum (array $numbers) {
+function arraySum(array $numbers) {
   if (empty($numbers)) {
     return 0;
   }
@@ -17,16 +17,16 @@ function arraySum (array $numbers) {
 assert_options(ASSERT_BAIL, 1);
 
 $tests = array(
-  22 => array(2,1,5,6,8),
-  4 => array(0,1,0,3),
-  -4 => array(2,0,-5,-1),
+  array('data' => array(2,1,5,6,8), 'expected' => 22),
+  array('data' => array(0,1,0,3), 'expected' => 4),
+  array('data' => array(2,0,-5,-1), 'expected' => -4),
 );
 
-foreach ($tests as $expected => $testArray) {
-  $result = arraySum($testArray);
+foreach ($tests as $test) {
+  $result = arraySum($test['data']);
   assert(
-    $result == $expected,
-    implode($testArray, ',') . ' expected ' . $expected . ' got ' . $result
+    $result == $test['expected'],
+    implode($test['data'], ',') . ' expected ' . $test['expected'] . ' got ' . $result
   );
 }
 
