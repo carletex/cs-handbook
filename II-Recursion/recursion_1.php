@@ -25,7 +25,7 @@ $tests = array(
 foreach ($tests as $test) {
   $result = arraySum($test['data']);
   assert(
-    $result == $test['expected'],
+    $result === $test['expected'],
     implode($test['data'], ',') . ' expected ' . $test['expected'] . ' got ' . $result
   );
 }
