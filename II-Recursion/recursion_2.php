@@ -2,7 +2,6 @@
 /**
  * Given a string S, write a recursive function to determine if
  * it is a palindrome.
- *
  */
 function isPalindrome($s) {
   $len = strlen($s);
@@ -21,16 +20,16 @@ function isPalindrome($s) {
 assert_options(ASSERT_BAIL, 1);
 
 $tests = array(
-  array('data' => 'ana', 'expected' => TRUE),
-  array('data' => 'radaar', 'expected' => FALSE),
-  array('data' => 'neveroddoreven', 'expected' => TRUE),
+  array('input' => 'ana', 'expected' => TRUE),
+  array('input' => 'radaar', 'expected' => FALSE),
+  array('input' => 'neveroddoreven', 'expected' => TRUE),
 );
 
 foreach ($tests as $test) {
-  $result = isPalindrome($test['data']);
+  $result = isPalindrome($test['input']);
   assert(
     $result === $test['expected'],
-    $test['data'] . ' expected ' . $test['expected'] . ' got ' . $result
+    $test['input'] . ' expected ' . $test['expected'] . ' got ' . $result
   );
 }
 
