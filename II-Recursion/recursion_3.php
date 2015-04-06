@@ -4,10 +4,7 @@
  * number in binary.
  */
 function getBinary($n) {
-  if ($n == 0) {
-    return '';
-  }
-  return getBinary(intval($n / 2)) . $n % 2;
+  return $n ? getBinary(intval($n / 2)) . $n % 2 : '';
 }
 
 /**

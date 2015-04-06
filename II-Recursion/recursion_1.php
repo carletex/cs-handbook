@@ -4,10 +4,7 @@
  * get the sum
  */
 function arraySum(array $numbers) {
-  if (empty($numbers)) {
-    return 0;
-  }
-  return arraySum(array_slice($numbers, 1)) + $numbers[0];
+  return $numbers ? arraySum(array_slice($numbers, 1)) + $numbers[0] : 0;
 }
 
 /**
