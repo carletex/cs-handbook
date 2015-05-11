@@ -16,8 +16,8 @@ function average(array $numbers) {
   return $sum / $len; // O(1)
 }
 
-// Runtime: O(n)
-// Memory (extra): O(1)
+// Runtime: O(2 + n*2 + 1) = O(n)
+// Memory (extra): O(2) = O(1)
 
 /**
  * Tests
@@ -37,4 +37,4 @@ foreach ($tests as $test) {
   );
 }
 
-print "All test passed. Averdage function works\n";
+print "All test passed. Average function works\n";
