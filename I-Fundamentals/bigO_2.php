@@ -15,7 +15,7 @@ function matrixSum(array $matrix1, array $matrix2) {
 }
 
 // Runtime: O(1 + n*m) = O(n^2)
-// Memory (extra): O(n+m) = O(n)
+// Memory (extra): O(n)
 
 /**
  * Tests
@@ -43,4 +43,4 @@ assert(
   . ' got ' . json_encode($result)
 );
 
-print "Test passed. Averdage function works\n";
+print "Test passed. MatrixSum function works\n";
