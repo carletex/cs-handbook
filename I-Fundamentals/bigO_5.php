@@ -24,7 +24,6 @@ function getOcurrencesLetters($book) {
  Memory (extra)
  The keys of the count array would be the same for every book (if the same language)
  O(~50 = english alphabet + symbols.) = O(1) -> independent of the book
-
  * A lot of occurrences in a letter (a big big big number) would break the memory.
 */
 
