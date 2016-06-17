@@ -9,7 +9,8 @@ function sumDigits($number) {
 	$sum = 0; // O(1)
 	do {
 		$sum += $number % 10; // O(1)
-	} while ($number = (int) $number / 10) // O(log n)
+	} while ($number = (int) $number / 10); // O(log n)
+	return $sum;
 }
 
 // Runtime: O(log n + 1 + 1) = O(log n)
