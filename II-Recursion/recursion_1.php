@@ -7,6 +7,10 @@ function arraySum(array $numbers) {
   return $numbers ? arraySum(array_slice($numbers, 1)) + $numbers[0] : 0;
 }
 
+// Formalization
+// Base: arraySum(array()) = 0
+// Recurrence: arraySum(n) = n[0] + arraySum(n[1..n])
+
 /**
  * Tests
  */

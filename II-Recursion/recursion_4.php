@@ -7,6 +7,10 @@ function reverse($s) {
   return $s ? reverse(substr($s, 1)) . $s[0] : '';
 }
 
+// Formalization
+// Base: reverse('') = '';
+// Recurrence: reverse(s) = reverse(s[1..n]) . s[0]
+
 /**
  * Tests
  */

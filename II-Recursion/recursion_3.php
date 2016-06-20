@@ -4,8 +4,12 @@
  * number in binary.
  */
 function getBinary($n) {
-  return $n ? getBinary(intval($n / 2)) . $n % 2 : '';
+  return $n ? getBinary(intval($n / 2)) . $n % 2 : '0';
 }
+
+// Formalization
+// Base: getBinary(0) = '0';
+// Recurrence: getBinary(n) = getBinary(n/2) . n % 2
 
 /**
  * Tests
@@ -13,9 +17,9 @@ function getBinary($n) {
 assert_options(ASSERT_BAIL, 1);
 
 $tests = array(
-  array('input' => 1, 'expected' => '1'),
-  array('input' => 25, 'expected' => '11001'),
-  array('input' => 137, 'expected' => '10001001'),
+  array('input' => 0, 'expected' => '0'),
+  array('input' => 25, 'expected' => '011001'),
+  array('input' => 137, 'expected' => '010001001'),
 );
 
 foreach ($tests as $test) {

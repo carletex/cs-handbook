@@ -14,6 +14,10 @@ function isPalindrome($s) {
   return FALSE;
 }
 
+// Formalization
+// Base: isPalindrome(0) = TRUE, isPalindrome(1) = TRUE
+// Recurrence: isPalindrome(s) = (s[0] == s[n]) && isPalindrome(s[1..n-1])
+
 /**
  * Tests
  */
