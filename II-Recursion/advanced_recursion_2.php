@@ -1,20 +1,31 @@
 <?php 
 
 /**
- * Hanoi
+ * Hanoi: Write a solution for hanoi towers but with the restriction
+ * that discs can only be moved from adjacent poles. (You can
+ * move a disc from A to B but not A to C because they are not adjacent).
  */
 
-function hanoi($n, $start, $helper, $destination) {
-	if ($n == 1) {
-		print "Move from $start to $destination\n";
-	} 
-	else {
-		hanoi($n-1, $start, $destination, $helper);
-		hanoi(1, $start, $helper, $destination);
-		hanoi($n-1, $helper, $start, $destination);
+// We are asumming a 3-peg hanoi problem
+
+function isAdjacent($start, $destination) {
+	if (($start == "A" && $destination == "C") || ($start == "C") && ($destination == "A")) {
+		return FALSE;
+	}
+	return TRUE;
+}
+
+
+function hanoi($n, $start, $destination) {
+	if ($n > 0) {
+		hanoi($n-1, $start, $destination);
+		print "Move from $start to B\n";
+		hanoi($n-1, $destination, $start);
+		print "Move from B to $destination\n";
+		hanoi($n-1, $start, $destination);
 	}
 }
 
 print '<pre>';
-hanoi(4, "A", "B", "C");
+hanoi(3, "A", "C");
 print '</pre>';
