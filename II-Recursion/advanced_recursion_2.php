@@ -7,15 +7,6 @@
  */
 
 // We are asumming a 3-peg hanoi problem
-
-function isAdjacent($start, $destination) {
-	if (($start == "A" && $destination == "C") || ($start == "C") && ($destination == "A")) {
-		return FALSE;
-	}
-	return TRUE;
-}
-
-
 function hanoi($n, $start, $destination) {
 	if ($n > 0) {
 		hanoi($n-1, $start, $destination);
