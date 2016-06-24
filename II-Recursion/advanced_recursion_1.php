@@ -5,22 +5,28 @@
  * its non-empty substrings.
  */
 
-function substring($str) {
-
-	if ($str) {
-		$str_array = str_split($str);
-		$len = count($str_array);
-		$sub = '';
-		$result = array();
-		for ($i=0; $i < $len; $i++) { 
-			$sub .= $str_array[$i];
-			$result[] = $sub;
-		}
-		$result = array_merge($result, substring(substr($str, 1)));
-		return $result;
+// Helper
+// Return all the substrings from the string given, which have the first char of the string
+function substring_toend($str) {
+	// Base case on empty string
+	if (empty($str)) { 
+		return array();
 	}
-	return array();
+	// Recursive relation
+	$result = array_merge(array($str), substring_toend(substr($str, 0, -1)));
+	return $result;
 }
+
+function substring($str) {
+	// Base case on empty string
+	if (empty($str)) {
+		return array();
+	}
+	// Recursive relation
+	$result = array_merge(substring_toend($str), substring(substr($str, 1)));
+	return $result;
+}
+
 
 /**
  * Tests
