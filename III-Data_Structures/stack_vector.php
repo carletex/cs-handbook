@@ -76,49 +76,45 @@ class Vector {
 		$this->int_arr[$index] = $el;
 	}
 
+	/**
+	 * 1. Implement addVector(Vector v) to the Vector class, which adds
+	 * all the elements of v to the current vector. 
+	 */
+	public function addVector(Vector $vector) {
+		for ($i = 0; $i < $vector->size; $i++) {
+			$this->add($vector->get($i));
+		}
+	}
+
 }
-echo "<pre>";
+
+/**
+ * Tests
+ */
+assert_options(ASSERT_BAIL, 1);
+
+print '<pre>';
+// addVector
 $vec = new Vector(4);
-print '<h3>Add elements</h3>';
-$vec->add(1);
 $vec->add(2);
-$vec->add(3);
-$vec->add(4);
-$vec->add(5);
-$vec->add(6);
-print '<br/>';
-print_r($vec->int_arr);
-print('size: ' . $vec->size);
-print '<br/>';
+$vec->add(24);
 
+$vec2 = new Vector(2);
+$vec2->add(1);
+$vec2->add(32);
 
-print '<h3>Pop</h3>';
-print('Pop: ' . $vec->pop());
-print '<br/>';
-print_r($vec->int_arr);
-print('size: ' . $vec->size);
-print '<br/>';
+$expected = new Vector(4);
+$expected->add(2);
+$expected->add(24);
+$expected->add(1);
+$expected->add(32);
 
+$vec->addVector($vec2);
+assert(
+	$vec == $expected,
+	'Expected ' . json_encode($expected) . ' got ' . json_encode($vec)
+);
 
-print '<h3>Remove index 2</h3>';
-print('Remove: ' . $vec->remove(2));
-print '<br/>';
-print_r($vec->int_arr);
-print('size: ' . $vec->size);
-print '<br/>';
+print "Test passed. addVector method in Vector class works\n";
+print '</pre>';
 
-
-print '<h3>Get index 1</h3>';
-print('Get: ' . $vec->get(1));
-print '<br/>';
-print_r($vec->int_arr);
-print('size: ' . $vec->size);
-print '<br/>';
-
-
-print '<h3>Insert 23 on index 2</h3>';
-print('Insert: ' . $vec->insert(2, 23));
-print '<br/>';
-print_r($vec->int_arr);
-print('size: ' . $vec->size);
-echo "</pre>";
