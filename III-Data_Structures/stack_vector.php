@@ -86,6 +86,19 @@ class Vector {
 		}
 	}
 
+	/**
+	 * 2. Implement removeValue(Integer i) that finds the element i and
+	 * removes it from the current vector.
+	 */
+	public function removeValue($value) { 
+		for ($i = 0; $i < $this->size; $i++) {
+			if ($this->get($i) == $value) {
+				$this->remove($i);
+			}
+		}
+	}
+
+
 }
 
 /**
@@ -116,5 +129,26 @@ assert(
 );
 
 print "Test passed. addVector method in Vector class works\n";
+
+// removeValue
+$vec = new Vector(4);
+$vec->add(2);
+$vec->add(24);
+$vec->add(3);
+$vec->add(52);
+
+$vec->removeValue(3);
+
+$expected = new Vector(4);
+$expected->add(2);
+$expected->add(24);
+$expected->add(52);
+
+assert(
+	$vec == $expected,
+	'Expected ' . json_encode($expected) . ' got ' . json_encode($vec)
+);
+
+print "Test passed. removeValue method in Vector class works\n";
 print '</pre>';
 
