@@ -38,7 +38,7 @@ class LinkedList {
 		if ($this->head == null) {
 			throw new Exception('Empty Linked list');
 		}
-		$ret = $this->head->value;
+		$ret = $this->head;
 		$this->head = $this->head->next;
 		$this->size--;
 		if ($this->size == 0) {
@@ -52,7 +52,7 @@ class LinkedList {
 		$current = $this->head;
 		while ($current != NULL) {
 			if ($index == $i){
-				return $current->value;
+				return $current;
 			}
 			$current = $current->next;
 
