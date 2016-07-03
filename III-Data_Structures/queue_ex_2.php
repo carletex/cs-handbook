@@ -1,6 +1,6 @@
 <?php 
 /**
- * A game is played by always eliminating the kth player from
+ * 2. A game is played by always eliminating the kth player from
  * the last elimination and played until one player is left. Given
  * N players where each is assigned to a number, find the number
  * of the last remaining player.
