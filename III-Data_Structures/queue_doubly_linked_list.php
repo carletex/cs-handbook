@@ -2,12 +2,17 @@
 
 class Link {
 	public $value;
+	public $prev;
 	public $next;
 
 	public function __construct($value) {
 		$this->value = $value;
 		$this->prev = NULL;
 		$this->next = NULL;
+	}
+
+	public function __toString() {
+		return (string)$this->value;
 	}
 }
 
@@ -40,7 +45,7 @@ class DoublyLinkedList {
 		if ($this->head == null) {
 			throw new Exception('Empty Linked list');
 		}
-		$ret = $this->head->value;
+		$ret = $this->head;
 		$this->head = $this->head->next;
 		$this->head->prev = NULL;
 		$this->size--;
@@ -56,18 +61,18 @@ class DoublyLinkedList {
 			$current = $this->head;
 			while ($current != NULL) {
 				if ($index == $i){
-					return $current->value;
+					return $current;
 				}
 				$current = $current->next;
 				$i++;
 			}
 		}
 		else {
-			$i = $this->size;
+			$i = $this->size - 1;
 			$current = $this->end;
 			while ($current != NULL) {
 				if ($index == $i){
-					return $current->value;
+					return $current;
 				}
 				$current = $current->prev;
 				$i--;
@@ -81,8 +86,17 @@ class DoublyLinkedList {
 			$this->end = $node;
 		}
 		$node->next = $node->next->next;
-		$node->next->prev = $node;
 		$this->size--;
+		if ($this->end != $node) {
+			$node->next->prev = $node;
+		}
+	}
+
+	public function __toString() {
+		for ($i = 0; $i < $this->size; $i++) { 
+			$ret[] = $this->get($i);
+		}
+		return implode($ret, ',');
 	}
 
 }
