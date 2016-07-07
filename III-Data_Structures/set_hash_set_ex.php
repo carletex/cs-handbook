@@ -16,3 +16,13 @@ function getHash($str, $hashSize) {
 }
 
 
+/**
+ * 2. Calculate the probability of a collision occurring given the
+ * number of buckets and number of elements in the hash set.
+ */
+
+function getCollisionProbability($numBuckets, $numElements) {
+	// The ratio of number of total elements
+	// and the number of buckets
+	return (float) $numElements / $numBuckets;
+}
