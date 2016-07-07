@@ -23,8 +23,8 @@ class HashSet {
 
 	public function getHash($x, $hashSize) {
 		// To test: Use modulus as hash function.
-		// Using a good hasg function is really important
-		// to the set to perform well.
+		// Using a good hash function is really important
+		// to the set, in order to perform well.
 		return $x % $hashSize;
 	}
 
