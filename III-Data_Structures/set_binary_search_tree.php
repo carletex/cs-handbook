@@ -172,4 +172,28 @@ class BinarySearchTree {
 			return TRUE;
 		}
 
+		public function strSubtree(Node $curTree = NULL) {
+			if (!$curTree) {
+				return "";
+			}
+			$ret = "";
+			// Print left child.
+			$ret .= $this->strSubtree($curTree->left);
+			// Print current node.
+			$ret .= $curTree->value;
+			$ret .= ",";
+			// Print right child.
+			$ret .= $this->strSubtree($curTree->right);
+			return $ret;
+		}
+
+		public function __toString() {
+			$ret = "";
+			if ($this->root) {
+				$ret .= $this->strSubtree($this->root);
+			}
+			// return ret.substring(0, ret.length() - 1);
+			return rtrim($ret, ',');
+		}
+
 }
