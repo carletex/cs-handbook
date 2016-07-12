@@ -1,11 +1,8 @@
 <?php 
 
 /**
- * 1. Given a list of words, determine how many of them are
- * anagrams of each other. An anagram is a word that can
- * have its letters scrambled into another word.
- *  • For example, silent and listen are anagrams but banana
- *    and orange are not.
+ * 2. Given the friend lists of two people, find the number of
+ * mutual friends.
  */
 
 include_once './set_binary_search_tree.php';
