@@ -11,29 +11,25 @@
 include_once './set_binary_search_tree.php';
 
 function checkAnagram($w1, $w2) {
-	// ToDo. We need a tree where duplicate are allowed
-	$tree = new BinarySearchTree();
+	/**
+	 * If we want to implement this with a tree we need
+	 * a tree where duplicates are allowed, so:
+	 *   1- Add all the chars in w1 to the tree
+	 *   2- Remove all the char in w1 in the tree
+	 *   3- Result
+	 *     * If tree is empty at the end of the loop => anagram
+	 *     * If we a empty the tree before finishing the loop => not anagram.
+	 *     * Any other case => not anagram.
+	 *
+	 * For more See commit 7d7a11007e98864813c9bb6a635fe0c7682b635b
+	*/
+
+	// We use arrays
 	$w1arr = str_split($w1);
 	$w2arr = str_split($w2);
 
-	// Populate tree
-	foreach ($w1arr as $c) {
-		$tree->insert($c);
-	}
-
 	// Remove w2 chars
-	foreach ($w2arr as $c) {
-		if (!$tree->size) {
-			// We emptied the tree.
-			// W2 has the same chars than W1 and more.
-			return 0;
-		}
-		$tree->remove($c);
-	}
-
-	if (!$tree->size) {
-		// Empty tree
-		// W1 and W2 have the same chars
+	if (sizeof($w1arr) == sizeof($w2arr) && !array_diff($w1arr, $w2arr)) {
 		return 1;
 	}
 
