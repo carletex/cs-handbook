@@ -17,7 +17,7 @@ class Node {
 		$this->parent = $parent;
 	}
 
-	public function replaceChild(Node $child, Node $replacement) {
+	public function replaceChild(Node $child, Node $replacement = NULL) {
 		if ($this->left == $child) {
 			$this->left = $replacement;
 		}
@@ -147,7 +147,7 @@ class BinarySearchTree {
 		elseif (!$curNode->right) {
 			// Case 2b: Removed node only has a left child.
 			// Special case if node is root.
-			if (curNode == root) {
+			if ($curNode == $this->root) {
 				$this->root = $curNode->left;
 				$this->root->parent = NULL;
 			}
@@ -159,7 +159,7 @@ class BinarySearchTree {
 		else {
 			// Case 3: Removed node has two children.
 			// Get rightmost of left subtree.
-			$rightmost = curNode.left;
+			$rightmost = $curNode->left;
 			while ($rightmost->right) {
 				$rightmost = $rightmost->right;
 			}
