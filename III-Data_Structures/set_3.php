@@ -1,4 +1,3 @@
-
 <?php 
 
 /**
@@ -6,24 +5,20 @@
  * numbers that sum to 0.
  */
 
-include_once './set_binary_search_tree.php';
-
-function getMutualFriends($f1, $f2) {
-    $tree = new BinarySearchTree();
-
-    // Populate tree
-    foreach ($f1 as $friend) {
-        $tree->insert($friend);
+function getNumberPairsZero($numbers) {
+    if (!$numbers) {
+        return 0;
     }
-    $initialTreeSize = $tree->size;
-
-    // Remove f2 from the tree
-    foreach ($f2 as $friend) {
-        $tree->remove($friend);
+    $pairs = 0;
+    $firstNumber = array_shift($numbers);
+    foreach ($numbers as $number) {
+        if ($firstNumber + $number == 0) {
+            $pairs++;
+        }
     }
-
-    return $initialTreeSize - $tree->size;
+    return $pairs + getNumberPairsZero($numbers);
 }
+
 
 /**
  * Tests
@@ -32,34 +27,25 @@ assert_options(ASSERT_BAIL, 1);
 
 $tests = array(
     array(
-        'input' => array(
-            array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
-            array('luis', 'carolina', 'patricia', 'pedro')
-        ), 
+        'input' => array('8', '2', '4', '-8', '-2'), 
         'expected' => 2
     ),
     array(
-        'input' => array(
-            array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
-            array('luis', 'cristina', 'carlos', 'laura', 'pedro'),
-        ), 
-        'expected' => 5
+        'input' => array('2', '-1', '9', '-12', '5'), 
+        'expected' => 0
     ),
     array(
-        'input' => array(
-            array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
-            array('antonio', 'jim', 'victor'),
-        ), 
-        'expected' => 0
+        'input' => array('9', '8', '2', '-8', '-2', '-9'), 
+        'expected' => 3
     ),
 );
 
 foreach ($tests as $test) {
-    $result = getMutualFriends($test['input'][0], $test['input'][1]);
+    $result = getNumberPairsZero($test['input']);
     assert(
         $result === $test['expected'],
         json_encode($test['input']) . ' expected ' . $test['expected'] . ' got ' . $result
     );
 }
 
-print "All test passed. getMutualFriends works\n";
+print "All test passed. getNumberPairsZero works\n";
