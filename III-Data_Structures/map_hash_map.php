@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Implementation of a hash set
+ * Implementation of a hash map
  */
 
 include_once './queue_linked_list.php';
