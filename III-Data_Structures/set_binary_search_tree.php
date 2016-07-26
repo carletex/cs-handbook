@@ -88,7 +88,7 @@ class BinarySearchTree {
 			if ($x == $curNode->value) {
 				return TRUE;
 			}
-			elseif (x < $curNode->value) {
+			elseif ($x < $curNode->value) {
 				// Traverse left tree if x is less than current node.
 				$curNode = $curNode->left;
 			}
