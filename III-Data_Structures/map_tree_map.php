@@ -111,6 +111,49 @@ class TreeMap {
     return FALSE;
   }
 
+  public function getValue($key) {
+    $curNode = $this->root;
+    // Iterate through tree.
+    while ($curNode != null) {
+      if ($key == $curNode->value->key) {
+        return $curNode->value->value;
+      }
+      elseif ($key < $curNode->value->key) {
+        // Traverse left tree if key is less than current node.
+        $curNode = $curNode->left;
+      }
+      else {
+        // Traverse right tree if x is greater then current node
+        $curNode = $curNode->right;
+      }
+    }
+    // Return false if not found.
+    return FALSE;
+  }
+
+  public function changeValue($key, $newVal) {
+    $curNode = $this->root;
+    // Iterate through tree.
+    while ($curNode != null) {
+      if ($key == $curNode->value->key) {
+        // Chnage the value
+        $curNode->value->value = $newVal;
+        return $newVal;
+      }
+      elseif ($key < $curNode->value->key) {
+        // Traverse left tree if key is less than current node.
+        $curNode = $curNode->left;
+      }
+      else {
+        // Traverse right tree if x is greater then current node
+        $curNode = $curNode->right;
+      }
+    }
+    // Return false if not found.
+    return FALSE;
+  }
+
+
   public function remove($key) {
     $curNode = $this->root;
     while ($curNode) {
@@ -190,8 +233,8 @@ class TreeMap {
       // Print left child.
       $ret .= $this->strSubtree($curTree->left);
       // Print current node.
-      $ret .= 'key: ' . $curTree->value->key . ' value: ' . $curTree->value->value;
-      $ret .= "<br/>";
+      $ret .= $curTree->value->key . '=>' . $curTree->value->value;
+      $ret .= ",";
       // Print right child.
       $ret .= $this->strSubtree($curTree->right);
       return $ret;
