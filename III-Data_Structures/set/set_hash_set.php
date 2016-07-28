@@ -4,7 +4,7 @@
  * Implementation of a hash set
  */
 
-include_once './queue_linked_list.php';
+include_once '../queue/queue_linked_list.php';
 
 class HashSet {
 	public $buckets;

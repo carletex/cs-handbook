@@ -20,7 +20,10 @@ $agenda->put('652221546', 'Alfred');
 // Remove contacts
 $agenda->remove('687598685');
 
-print_r($agenda);
-
 // Get contacts
 $name = $agenda->get('668922551')->value;
+
+print '<pre>';
+print '<h1>Agenda</h1>';
+print_r($agenda);
+print '</pre>';

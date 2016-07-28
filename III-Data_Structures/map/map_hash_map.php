@@ -4,7 +4,7 @@
  * Implementation of a hash map
  */
 
-include_once './queue_linked_list.php';
+include_once '../queue/queue_linked_list.php';
 
 class Pair {
     public $key;
