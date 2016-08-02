@@ -106,16 +106,3 @@ class MinHeap {
     }
   }
 }
-
-$list = new MinHeap(5);
-$list->push(5);
-$list->push(2);
-$list->push(8);
-$list->push(1);
-$list->push(4);
-$list->push(3);
-$list->push(10);
-
-print '<pre>';
-print_r($list);
-print '</pre>';
