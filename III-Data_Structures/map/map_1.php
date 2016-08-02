@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * 1. Given a list of N strings, output the strings in alphabetical
@@ -12,8 +12,7 @@ function orderAndCount($strings) {
   foreach ($strings as $string) {
     if ($list->contains($string)) {
       $list->changeValue($string, $list->getValue($string) + 1);
-    }
-    else {
+    } else {
       $list->insert($string, 1);
     }
   }
@@ -25,7 +24,6 @@ function orderAndCount($strings) {
  * Tests
  */
 assert_options(ASSERT_BAIL, 1);
-
 
 $tests = array(
   array('input' => array('abc', 'zyz', 'abc', 'asd'), 'expected' => 'abc=>2,asd=>1,zyz=>1'),

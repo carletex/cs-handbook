@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * MaxHeap Implementation
@@ -50,26 +50,23 @@ class MaxHeap {
       $right = $idx * 2 + 2;
       if ($left < $this->size && $right < $this->size) {
         // If both child exists.
-        if ($this->arr[$left] > $this->arr[$right] && 
+        if ($this->arr[$left] > $this->arr[$right] &&
+          $this->arr[$left] > $this->arr[$idx]) {
           // If left child is larger than right child and
           // current node.
-          $this->arr[$left] > $this->arr[$idx]) {
           $this->swap($left, $idx);
           $idx = $left;
-        }
-        elseif ($this->arr[$right] >= $this->arr[$left] &&
+        } elseif ($this->arr[$right] >= $this->arr[$left] &&
           $this->arr[$right] > $this->arr[$idx]) {
           // If right child is larger or equal than left child
           // and current node.
           $this->swap($right, $idx);
           $idx = $right;
-        }
-        else {
-        // If no children, stop.
+        } else {
+          // If no children, stop.
           break;
         }
-      }
-      elseif ($left < $this->size) {
+      } elseif ($left < $this->size) {
         // If there is only a left child.
         $this->swap($left, $idx);
         $idx = $left;
@@ -78,8 +75,7 @@ class MaxHeap {
       elseif ($right < $this->size) {
         $this->swap($right, $idx);
         $idx = $right;
-      }
-      else {
+      } else {
         break;
       }
     }

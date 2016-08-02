@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Hanoi: Write a solution for hanoi towers but with the restriction
@@ -8,13 +8,13 @@
 
 // We are asumming a 3-peg hanoi problem
 function hanoi($n, $start, $destination) {
-	if ($n > 0) {
-		hanoi($n-1, $start, $destination);
-		print "Move from $start to B\n";
-		hanoi($n-1, $destination, $start);
-		print "Move from B to $destination\n";
-		hanoi($n-1, $start, $destination);
-	}
+  if ($n > 0) {
+    hanoi($n - 1, $start, $destination);
+    print "Move from $start to B\n";
+    hanoi($n - 1, $destination, $start);
+    print "Move from B to $destination\n";
+    hanoi($n - 1, $start, $destination);
+  }
 }
 
 print '<pre>';

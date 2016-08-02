@@ -25,8 +25,8 @@ function average(array $numbers) {
 assert_options(ASSERT_BAIL, 1);
 
 $tests = array(
-  array('input' => array(1,2,3,4,5), 'expected' => 3),
-  array('input' => array(0,1,0,3), 'expected' => 1),
+  array('input' => array(1, 2, 3, 4, 5), 'expected' => 3),
+  array('input' => array(0, 1, 0, 3), 'expected' => 1),
 );
 
 foreach ($tests as $test) {

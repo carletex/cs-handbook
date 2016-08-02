@@ -1,5 +1,5 @@
-<?php 
-/** 
+<?php
+/**
  * 2. Given a mapping of ids to names, output the ids in order
  * by lexicographical name.
  */
@@ -45,8 +45,8 @@ assert_options(ASSERT_BAIL, 1);
 
 $tests = array(
   array(
-    'input' => array('es-car' => 'Carlos', 'al-ann' => 'Anne' , 'de-pet' => 'Peter'),
-    'expected' => array('al-ann', 'de-pet', 'es-car')
+    'input' => array('es-car' => 'Carlos', 'al-ann' => 'Anne', 'de-pet' => 'Peter'),
+    'expected' => array('al-ann', 'de-pet', 'es-car'),
   ),
 );
 

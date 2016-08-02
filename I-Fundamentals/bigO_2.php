@@ -6,7 +6,8 @@
  */
 function matrixSum(array $matrix1, array $matrix2) {
   $resultMatrix = array(); // 0(1)
-  foreach ($matrix1 as $i => $row) { // O(n)
+  foreach ($matrix1 as $i => $row) {
+    // O(n)
     foreach ($row as $j => $value) { // O(m)
       $resultMatrix[$i][$j] = $matrix1[$i][$j] + $matrix2[$i][$j]; // O(1)
     }
@@ -23,16 +24,16 @@ function matrixSum(array $matrix1, array $matrix2) {
 assert_options(ASSERT_BAIL, 1);
 
 $matrix1 = array(
-    array(1, 2, 3),
-    array(4, 5, 6),
+  array(1, 2, 3),
+  array(4, 5, 6),
 );
 $matrix2 = array(
-    array(4, 5, 6),
-    array(7, 8, 9),
+  array(4, 5, 6),
+  array(7, 8, 9),
 );
 $sumExpected = array(
-    array(5, 7, 9),
-    array(11, 13, 15),
+  array(5, 7, 9),
+  array(11, 13, 15),
 );
 
 $result = matrixSum($matrix1, $matrix2);

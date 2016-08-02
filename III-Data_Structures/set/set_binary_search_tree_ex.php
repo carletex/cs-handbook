@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * 1. Write a function to determine if a binary tree is a binary
@@ -12,34 +12,34 @@ include_once './set_binary_search_tree.php';
  * node < right && node > left
  */
 function isSearchNode(Node $node = NULL) {
-	if (!$node) {
-		return TRUE;
-	}
-	$value = $node->value;
-	$leftValue = isset($node->left) ? $node->left->value : NULL;
-	$rightValue = isset($node->right) ? $node->right->value : NULL;
+  if (!$node) {
+    return TRUE;
+  }
+  $value = $node->value;
+  $leftValue = isset($node->left) ? $node->left->value : NULL;
+  $rightValue = isset($node->right) ? $node->right->value : NULL;
 
-	if (((isset($leftValue) && $value > $leftValue) || !$leftValue) ||
-		((isset($rightValue) && $value < $rightValue) || !$rightValue)) {
-			return TRUE;
-	}
-	return FALSE;
+  if (((isset($leftValue) && $value > $leftValue) || !$leftValue) ||
+    ((isset($rightValue) && $value < $rightValue) || !$rightValue)) {
+    return TRUE;
+  }
+  return FALSE;
 }
 
 function isSearchSubTree(Node $curTree = NULL) {
-	if (!$curTree) {
-		return TRUE;
-	}
-	// Recurrence
-	return isSearchNode($curTree) && isSearchSubTree($curTree->left) && isSearchSubTree($curTree->right);
+  if (!$curTree) {
+    return TRUE;
+  }
+  // Recurrence
+  return isSearchNode($curTree) && isSearchSubTree($curTree->left) && isSearchSubTree($curTree->right);
 }
 
 function isSearchTree(BinarySearchTree $binaryTree = NULL) {
-	$ret = FALSE;
-	if ($binaryTree->root) {
-		$ret = isSearchSubTree($binaryTree->root);
-	}
-	return $ret;
+  $ret = FALSE;
+  if ($binaryTree->root) {
+    $ret = isSearchSubTree($binaryTree->root);
+  }
+  return $ret;
 }
 
 /**
@@ -73,11 +73,11 @@ $tests = array(
 );
 
 foreach ($tests as $test) {
-	$result = isSearchTree($test['input']);
-	assert(
-		$result === $test['expected'],
-		json_encode($test['input']) . ' expected ' . $test['expected'] . ' got ' . $result
-	);
+  $result = isSearchTree($test['input']);
+  assert(
+    $result === $test['expected'],
+    json_encode($test['input']) . ' expected ' . $test['expected'] . ' got ' . $result
+  );
 }
 
 print "All test passed. isSearhTree works\n";

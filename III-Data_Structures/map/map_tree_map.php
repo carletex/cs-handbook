@@ -5,13 +5,13 @@
  */
 
 class Pair {
-    public $key;
-    public $value;
-    
-    public function __construct($key, $value) {
-        $this->key = $key;
-        $this->value = $value;
-    }
+  public $key;
+  public $value;
+
+  public function __construct($key, $value) {
+    $this->key = $key;
+    $this->value = $value;
+  }
 }
 
 class Node {
@@ -20,7 +20,7 @@ class Node {
   public $right;
   public $parent; // Not needed
 
-  public function __construct($key, $val, Node $parent = NULL){
+  public function __construct($key, $val, Node $parent = NULL) {
     $this->value = new Pair($key, $val);
     $this->left = null;
     $this->right = null;
@@ -30,8 +30,7 @@ class Node {
   public function replaceChild(Node $child, Node $replacement = NULL) {
     if ($this->left == $child) {
       $this->left = $replacement;
-    }
-    elseif ($this->right == $child) {
+    } elseif ($this->right == $child) {
       $this->right = $replacement;
     }
     // Set replacement nodes parent.
@@ -46,7 +45,7 @@ class TreeMap {
   public $size;
   public $root;
 
-  public function __construct(){
+  public function __construct() {
     $this->size = 0;
     $this->root = null;
   }
@@ -64,8 +63,7 @@ class TreeMap {
       if ($key == $curNode->value->key) {
         // Return if key already exists in set.
         return FALSE;
-      }
-      elseif ($key < $curNode->value->key) {
+      } elseif ($key < $curNode->value->key) {
         // Traverse left if key is less than current node.
         // If left child is empty, create new node.
         if (!$curNode->left) {
@@ -75,8 +73,7 @@ class TreeMap {
         }
         // Traverse left child.
         $curNode = $curNode->left;
-      }
-      else {
+      } else {
         // Traverse right otherwise.
         // If right child is empty, create new node.
         if (!$curNode->right) {
@@ -97,12 +94,10 @@ class TreeMap {
     while ($curNode != null) {
       if ($key == $curNode->value->key) {
         return TRUE;
-      }
-      elseif ($key < $curNode->value->key) {
+      } elseif ($key < $curNode->value->key) {
         // Traverse left tree if key is less than current node.
         $curNode = $curNode->left;
-      }
-      else {
+      } else {
         // Traverse right tree if x is greater then current node
         $curNode = $curNode->right;
       }
@@ -117,12 +112,10 @@ class TreeMap {
     while ($curNode != null) {
       if ($key == $curNode->value->key) {
         return $curNode->value->value;
-      }
-      elseif ($key < $curNode->value->key) {
+      } elseif ($key < $curNode->value->key) {
         // Traverse left tree if key is less than current node.
         $curNode = $curNode->left;
-      }
-      else {
+      } else {
         // Traverse right tree if x is greater then current node
         $curNode = $curNode->right;
       }
@@ -139,12 +132,10 @@ class TreeMap {
         // Chnage the value
         $curNode->value->value = $newVal;
         return $newVal;
-      }
-      elseif ($key < $curNode->value->key) {
+      } elseif ($key < $curNode->value->key) {
         // Traverse left tree if key is less than current node.
         $curNode = $curNode->left;
-      }
-      else {
+      } else {
         // Traverse right tree if x is greater then current node
         $curNode = $curNode->right;
       }
@@ -153,18 +144,15 @@ class TreeMap {
     return FALSE;
   }
 
-
   public function remove($key) {
     $curNode = $this->root;
     while ($curNode) {
       if ($key == $curNode->value->key) {
         break;
-      }
-      elseif ($key < $curNode->value->key) {
+      } elseif ($key < $curNode->value->key) {
         // Traverse through left child.
         $curNode = $curNode->left;
-      }
-      else {
+      } else {
         // Traverse through right child.
         $curNode = $curNode->right;
       }
@@ -184,8 +172,7 @@ class TreeMap {
       else {
         $curNode->parent->replaceChild($curNode, NULL);
       }
-    }
-    else if (!$curNode->left) {
+    } else if (!$curNode->left) {
       // Case 2a: Removed node only has a right child.
       // Special case if node is root.
       if ($curNode == $this->root) {
@@ -196,8 +183,7 @@ class TreeMap {
       else {
         $curNode->parent->replaceChild($curNode, $curNode->right);
       }
-    }
-    elseif (!$curNode->right) {
+    } elseif (!$curNode->right) {
       // Case 2b: Removed node only has a left child.
       // Special case if node is root.
       if ($curNode == $this->root) {
@@ -208,8 +194,7 @@ class TreeMap {
       else {
         $curNode->parent->replaceChild($curNode, $curNode->left);
       }
-    }
-    else {
+    } else {
       // Case 3: Removed node has two children.
       // Get rightmost of left subtree.
       $rightmost = $curNode->left;
@@ -220,33 +205,33 @@ class TreeMap {
       $curNode->value = $rightmost->value;
       // Replace rightmost of left subtree with left child.
       $rightmost->parent->replaceChild($rightmost, $rightmost->left);
-      }
-      $this->size--;
-      return TRUE;
     }
+    $this->size--;
+    return TRUE;
+  }
 
-    public function strSubtree(Node $curTree = NULL) {
-      if (!$curTree) {
-        return "";
-      }
-      $ret = "";
-      // Print left child.
-      $ret .= $this->strSubtree($curTree->left);
-      // Print current node.
-      $ret .= $curTree->value->key . '=>' . $curTree->value->value;
-      $ret .= ",";
-      // Print right child.
-      $ret .= $this->strSubtree($curTree->right);
-      return $ret;
+  public function strSubtree(Node $curTree = NULL) {
+    if (!$curTree) {
+      return "";
     }
+    $ret = "";
+    // Print left child.
+    $ret .= $this->strSubtree($curTree->left);
+    // Print current node.
+    $ret .= $curTree->value->key . '=>' . $curTree->value->value;
+    $ret .= ",";
+    // Print right child.
+    $ret .= $this->strSubtree($curTree->right);
+    return $ret;
+  }
 
-    public function __toString() {
-      $ret = "";
-      if ($this->root) {
-        $ret .= $this->strSubtree($this->root);
-      }
-      // return ret.substring(0, ret.length() - 1);
-      return rtrim($ret, ',');
+  public function __toString() {
+    $ret = "";
+    if ($this->root) {
+      $ret .= $this->strSubtree($this->root);
     }
+    // return ret.substring(0, ret.length() - 1);
+    return rtrim($ret, ',');
+  }
 
 }

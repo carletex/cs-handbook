@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * 1. Create a hash map for a contact list (phone numbers as

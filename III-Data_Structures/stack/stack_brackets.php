@@ -1,17 +1,17 @@
-<?php 
+<?php
 /*
 
 1. Given a string of brackets of either () or [], determine if the
 bracket syntax is legal (every opening bracket has a closing
 bracket from left to right).
-	Legal syntax:
-	• ([()[]])
-	• ()()[]()()
-	Illegal syntax:
-	• (()]
-	• ()[(])
+Legal syntax:
+• ([()[]])
+• ()()[]()()
+Illegal syntax:
+• (()]
+• ()[(])
 
-*/
+ */
 
 $bracketPairs = array(
   '(' => ')',
@@ -35,8 +35,7 @@ function checkBrackets($str) {
     if (isset($stack[$count - 1]) && isBracketClosingPair($stack[$count - 1], $c)) {
       // Match: remove element
       array_pop($stack);
-    }
-    else {
+    } else {
       array_push($stack, $c);
     }
   }

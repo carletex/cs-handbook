@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * 2. Given the friend lists of two people, find the number of
@@ -8,20 +8,20 @@
 include_once './set_binary_search_tree.php';
 
 function getMutualFriends($f1, $f2) {
-    $tree = new BinarySearchTree();
+  $tree = new BinarySearchTree();
 
-    // Populate tree
-    foreach ($f1 as $friend) {
-        $tree->insert($friend);
-    }
-    $initialTreeSize = $tree->size;
+  // Populate tree
+  foreach ($f1 as $friend) {
+    $tree->insert($friend);
+  }
+  $initialTreeSize = $tree->size;
 
-    // Remove f2 from the tree
-    foreach ($f2 as $friend) {
-        $tree->remove($friend);
-    }
+  // Remove f2 from the tree
+  foreach ($f2 as $friend) {
+    $tree->remove($friend);
+  }
 
-    return $initialTreeSize - $tree->size;
+  return $initialTreeSize - $tree->size;
 }
 
 /**
@@ -30,35 +30,35 @@ function getMutualFriends($f1, $f2) {
 assert_options(ASSERT_BAIL, 1);
 
 $tests = array(
-    array(
-        'input' => array(
-            array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
-            array('luis', 'carolina', 'patricia', 'pedro')
-        ), 
-        'expected' => 2
+  array(
+    'input' => array(
+      array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
+      array('luis', 'carolina', 'patricia', 'pedro'),
     ),
-    array(
-        'input' => array(
-            array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
-            array('luis', 'cristina', 'carlos', 'laura', 'pedro'),
-        ), 
-        'expected' => 5
+    'expected' => 2,
+  ),
+  array(
+    'input' => array(
+      array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
+      array('luis', 'cristina', 'carlos', 'laura', 'pedro'),
     ),
-    array(
-        'input' => array(
-            array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
-            array('antonio', 'jim', 'victor'),
-        ), 
-        'expected' => 0
+    'expected' => 5,
+  ),
+  array(
+    'input' => array(
+      array('carlos', 'luis', 'pedro', 'cristina', 'laura'),
+      array('antonio', 'jim', 'victor'),
     ),
+    'expected' => 0,
+  ),
 );
 
 foreach ($tests as $test) {
-    $result = getMutualFriends($test['input'][0], $test['input'][1]);
-    assert(
-        $result === $test['expected'],
-        json_encode($test['input']) . ' expected ' . $test['expected'] . ' got ' . $result
-    );
+  $result = getMutualFriends($test['input'][0], $test['input'][1]);
+  assert(
+    $result === $test['expected'],
+    json_encode($test['input']) . ' expected ' . $test['expected'] . ' got ' . $result
+  );
 }
 
 print "All test passed. getMutualFriends works\n";

@@ -5,19 +5,19 @@
  * N digit numeric password.
  */
 function guessPassword($password) {
-	$guess = 0;
+  $guess = 0;
 
-	// This would break for big numbers.
-	$intPass = intval($password);
-	while (TRUE) {
-		// Forever
-		if ($guess === $intPass) {
-			return $guess;
-		}
-		$guess++;
-	}
-	// Program would never reach this point
-	return FALSE;
+  // This would break for big numbers.
+  $intPass = intval($password);
+  while (TRUE) {
+    // Forever
+    if ($guess === $intPass) {
+      return $guess;
+    }
+    $guess++;
+  }
+  // Program would never reach this point
+  return FALSE;
 }
 
 // Runtime: 0(n)
@@ -32,8 +32,8 @@ $password = '1234';
 
 $result = guessPassword($password);
 assert(
-	strval($result) === $password,
-	'Expected ' . $password . ' got ' . strval($result)
+  strval($result) === $password,
+  'Expected ' . $password . ' got ' . strval($result)
 );
 
 print "Test passed. guessPassword function works\n";
